@@ -20,7 +20,7 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 
   for (let i = 0; i < amount; i++) {
-    createPromise(2, 1500)
+    createPromise(position, delay)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
