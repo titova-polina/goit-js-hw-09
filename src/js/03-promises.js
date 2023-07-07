@@ -19,23 +19,13 @@ function createPromise(position, delay) {
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const delay = parseInt(form.elements.delay.value);
-  const step = parseInt(form.elements.step.value);
-  const amount = parseInt(form.elements.amount.value);
-
-  let position = 1;
-  let currentDelay = delay;
-
   for (let i = 0; i < amount; i++) {
-    createPromise(position, currentDelay)
+    createPromise(2, 1500)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-
-    position++;
-    currentDelay += step;
   }
 });
